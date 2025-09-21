@@ -66,6 +66,9 @@
           plenary-nvim # dep library for some plugins
           snacks-nvim
           friendly-snippets # provids a bunch of snippets for diff languages
+
+          mini-icons
+          mini-files
         ];
 
         themer = with pkgs.vimPlugins; (
@@ -98,7 +101,13 @@
 
           nvim-colorizer-lua
           gitsigns-nvim
-          mini-nvim
+          fidget-nvim
+
+          mini-pairs
+          mini-surround
+          mini-comment
+
+          vim-startuptime
         ];
       };
 
