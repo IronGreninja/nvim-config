@@ -21,6 +21,7 @@ local M = {
         markdown = { "mdformat" },
         nix = { "alejandra" },
         python = { "ruff_organize_imports", "ruff_format" },
+        go = { "gofmt" },
       },
       log_level = vim.log.levels.WARN,
       notify_no_formatters = true,
