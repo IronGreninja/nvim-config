@@ -22,6 +22,7 @@ local M = {
         nix = { "alejandra" },
         python = { "ruff_organize_imports", "ruff_format" },
         go = { "gofmt" },
+        java = { "google-java-format" },
       },
       log_level = vim.log.levels.WARN,
       notify_no_formatters = true,
