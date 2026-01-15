@@ -6,7 +6,7 @@ return {
     vim.opt.foldexpr = "nvim-treesitter#foldexpr()"
   end,
   after = function()
-    require("nvim-treesitter.configs").setup {
+    require("nvim-treesitter").setup {
       auto_install = false,
       highlight = { enable = true },
       indent = { enable = false },
