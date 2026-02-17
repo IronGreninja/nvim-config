@@ -50,7 +50,9 @@
           # Formatters
           # others should be installed in devshell
           stylua
+          # nix tooling always available
           alejandra
+          nixd
 
           # Telescope deps
           ripgrep
@@ -79,6 +81,10 @@
           kanagawa-paper-nvim
           onedark-nvim
           gruvbox-material
+        ];
+
+        lang = with pkgs.vimPlugins; [
+          vim-nix # fix indentation
         ];
 
         # themer = with pkgs.vimPlugins; (
@@ -179,6 +185,7 @@
           # colorscheme = "gruvbox-material";
           themes = true;
           test = true;
+          lang = true;
         };
       };
 
@@ -194,6 +201,7 @@
           general = true;
           themes = true;
           test = true;
+          lang = true;
         };
       };
     };
