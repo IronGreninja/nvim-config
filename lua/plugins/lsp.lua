@@ -86,6 +86,7 @@ return {
         "clangd",
         "pyright",
         "nixd",
+        "yamlls",
         "gopls",
       }
     end,

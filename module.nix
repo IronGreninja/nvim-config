@@ -17,16 +17,13 @@ inputs: {
     nvim-notify
     friendly-snippets # provids a bunch of snippets for diff languages
 
-    mini-icons
-    mini-files
-
     # themes
     kanagawa-paper-nvim
     onedark-nvim
     gruvbox-material
 
     # lang
-    vim-nix # fix indentation
+    # vim-nix # fix indentation
   ];
   specs.lazy = {
     lazy = true;
@@ -36,6 +33,7 @@ inputs: {
       nvim-lspconfig # LSP
       nvim-lint # Linter
       conform-nvim # Formatter
+
       nvim-treesitter.withAllGrammars
 
       which-key-nvim
@@ -54,6 +52,8 @@ inputs: {
       mini-pairs
       mini-surround
       mini-comment
+      mini-icons
+      mini-files
 
       vim-startuptime
     ];

@@ -1,8 +1,10 @@
 -- https://github.com/LazyVim/LazyVim/discussions/2248
 -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/util/mini.lua
 -- https://www.reddit.com/r/neovim/comments/1iuc54n/how_to_fix_this_minipair_issue/
-local M = function(opts)
-  local pairs = require "mini.pairs"
+local P = "mini.pairs"
+
+local F = function(opts)
+  local pairs = require(P)
   local open = pairs.open
   pairs.open = function(pair, neigh_pattern)
     if vim.fn.getcmdline() ~= "" then
@@ -38,4 +40,16 @@ local M = function(opts)
   end
 end
 
-return M
+return {
+  P,
+  event = "DeferredUIEnter",
+  after = function()
+    local opts = {
+      skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
+      skip_unbalanced = true,
+      markdown = true,
+    }
+    require(P).setup(opts)
+    F(opts)
+  end,
+}

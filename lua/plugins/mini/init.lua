@@ -1,19 +1,9 @@
-local this = "plugins.mini."
-
 local Mini = {}
 
 Mini.comment = {}
 
+-- :h text-objects
 Mini.surround = {}
-
-Mini.pairs = {
-  opts = {
-    skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
-    skip_unbalanced = true,
-    markdown = true,
-  },
-  after = require(this .. "pairs"),
-}
 
 local M = {}
 
