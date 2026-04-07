@@ -1,0 +1,34 @@
+name: Update Nix Flake
+
+on:
+  schedule:
+    # Runs at 00:00 on the 1st and 15th of every month
+    - cron: '0 0 1,15 * *'
+  workflow_dispatch: # Allows you to trigger it manually via the Actions tab
+
+jobs:
+  update-flake:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to push the commit
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+          # Value already defaults to true, but `persist-credentials` is required to push new commits to the repository.
+          persist-credentials: true
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update flake.lock
+        run: nix flake update
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "chore: update flake.lock"
+          file_pattern: 'flake.lock'
