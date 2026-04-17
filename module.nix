@@ -8,54 +8,34 @@ inputs: {
   imports = [wlib.wrapperModules.neovim];
 
   specs.general = with pkgs.vimPlugins; [
-    # plugins which are loaded at startup ...
-    lz-n # lazy-loading
-    vim-sleuth # auto set shiftwidth & expandtab
-    plenary-nvim # dep library for some plugins
-    nui-nvim # ui-library
-    snacks-nvim # some plugins need early-start
-    nvim-notify
-    friendly-snippets # provids a bunch of snippets for diff languages
-
-    # themes
-    kanagawa-paper-nvim
-    onedark-nvim
-    gruvbox-material
-
-    # lang
-    # vim-nix # fix indentation
+    # plugins which are loaded at startup (start) ...
   ];
   specs.lazy = {
     lazy = true;
     data = with pkgs.vimPlugins; [
-      # plugins which are not loaded until you vim.cmd.packadd them ...
-      blink-cmp # Completion
-      nvim-lspconfig # LSP
-      nvim-lint # Linter
-      conform-nvim # Formatter
+      # plugins which are not loaded until you vim.cmd.packadd them (opt) ...
+      #
+      # vim-nix # fix indentation for ft=nix
+      #
+      # vim-startuptime
 
+      # themes
+      gruvbox-material
+      onedark-nvim
+      kanagawa-paper-nvim
+
+      vim-sleuth
+      mini-nvim
+      conform-nvim
       nvim-treesitter.withAllGrammars
-
-      which-key-nvim
-      lualine-nvim
+      nvim-treesitter-textobjects
+      nvim-lspconfig
+      nvim-lint
+      blink-cmp
+      friendly-snippets
       bufferline-nvim
-      indent-blankline-nvim
-      fidget-nvim
-      noice-nvim
-
-      telescope-nvim
-      telescope-fzf-native-nvim
-
-      nvim-colorizer-lua
-      gitsigns-nvim
-
-      mini-pairs
-      mini-surround
-      mini-comment
-      mini-icons
-      mini-files
-
-      vim-startuptime
+      nvim-dap
+      nvim-dap-view
     ];
   };
   extraPackages = with pkgs; [
@@ -69,7 +49,7 @@ inputs: {
 
     yaml-language-server
 
-    # Telescope deps
+    # fuzzy pickers
     ripgrep
     fd
 
