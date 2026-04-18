@@ -22,13 +22,19 @@ Config.on_event("InsertEnter,CmdlineEnter", function()
         auto_show = false, -- only show menu on manual <C-space>
         auto_show_delay_ms = 300,
         draw = {
-          columns = {
-            { "kind_icon", "label", "label_description", gap = 1 },
-            { "source_id" },
-            -- { "label", "label_description", gap = 1 },
-            -- { "kind_icon", "kind", gap = 1 },
-          },
+          columns = function(ctx)
+            if ctx.mode == "cmdline" then
+              return { { "kind_icon" }, { "label" } }
+            else
+              return { { "kind_icon" }, { "label", "label_description", gap = 1 } }
+            end
+          end,
           components = {
+            label = {
+              width = {
+                max = function(ctx) return ctx.mode == "cmdline" and 30 or 60 end,
+              },
+            },
             -- source_name = {
             --   text = function(ctx) return string.format("[%s]", ctx.source_name) end,
             -- },
@@ -41,19 +47,6 @@ Config.on_event("InsertEnter,CmdlineEnter", function()
       -- window = { show_documentation = false },
     },
     snippets = { preset = "mini_snippets" },
-    cmdline = {
-      keymap = { preset = "inherit" },
-      -- sources = { "cmdline" },
-      completion = {
-        menu = {
-          auto_show = function(ctx)
-            return vim.fn.getcmdtype() == ":"
-            -- enable for inputs as well, with:
-            -- or vim.fn.getcmdtype() == '@'
-          end,
-        },
-      },
-    },
   }
 end)
 

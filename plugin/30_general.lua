@@ -72,7 +72,9 @@ end)
 now(function()
   require("mini.sessions").setup {
     --
-    autoread = true,
+    -- autoread = true,
+    -- need option to autoread only local if detected
+    -- ex: autoread_only_local = true
   }
 end)
 
@@ -215,7 +217,10 @@ later(function() require("mini.bufremove").setup() end)
 -- - Autopeek command range (like line number at the start) as-you-type.
 later(function()
   require("mini.cmdline").setup {
-    autocomplete = { enable = false }, -- use blink.cmp
+    -- use blink.cmp for autocompletion.
+    -- the following interferes with it
+    autocomplete = { enable = false },
+    autocorrect = { enable = false },
   }
 end)
 
