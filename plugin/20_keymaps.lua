@@ -20,6 +20,7 @@ Config.leader_group_clues = {
   { mode = "n", keys = "<Leader>f", desc = "+Find" },
   { mode = "n", keys = "<Leader>g", desc = "+Git" },
   { mode = "n", keys = "<Leader>l", desc = "+Language" },
+  { mode = "n", keys = "<Leader>d", desc = "+Debug" },
   { mode = "n", keys = "<Leader>m", desc = "+Map" },
   { mode = "n", keys = "<Leader>o", desc = "+Other" },
   { mode = "n", keys = "<Leader>s", desc = "+Session" },
@@ -163,6 +164,15 @@ nmap_leader("ls", "<Cmd>lua vim.lsp.buf.definition()<CR>", "Source definition")
 nmap_leader("lt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition")
 
 xmap_leader("lf", '<Cmd>lua require("conform").format()<CR>', "Format selection")
+
+-- d is for 'Debug'.
+nmap_leader("db", "<Cmd>DapToggleBreakpoint<CR>", "Breakpoint toggle")
+nmap_leader("dc", "<Cmd>DapContinue<CR>", "Continue/Start debug session")
+nmap_leader("dT", "<Cmd>DapTerminate<CR>", "Terminate debug session")
+-- todo: add conditional Breakpoint map
+nmap("<F4>", "<Cmd>DapStepInto<CR>", "(DAP)Step into")
+nmap("<F5>", "<Cmd>DapStepOver<CR>", "(DAP)Step over")
+nmap("<F7>", "<Cmd>lua require'dap'.run_to_cursor()<CR>", "(DAP)Step over")
 
 -- m is for 'Map'. Common usage:
 -- - `<Leader>mt` - toggle map from 'mini.map' (closed by default)

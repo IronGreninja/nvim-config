@@ -100,6 +100,7 @@ Config.new_autocmd(
 -- See `:h vim.diagnostic` and `:h vim.diagnostic.config()`.
 local diagnostic_opts = {
   -- Show signs on top of any other sign, but only for warnings and errors
+  -- fixme: this draws diagnostic signs on top of DAP signs if both are present on same line
   signs = { priority = 9999, severity = { min = "WARN", max = "ERROR" } },
 
   -- Show all diagnostics as underline (for their messages type `<Leader>ld`)

@@ -26,16 +26,23 @@ inputs: {
 
       vim-sleuth
       mini-nvim
-      conform-nvim
+      bufferline-nvim
+      blink-indent
+      snacks-nvim
+
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
+      nvim-treesitter-context
+
       nvim-lspconfig
       nvim-lint
+      conform-nvim
       blink-cmp
       friendly-snippets
-      bufferline-nvim
+
       nvim-dap
       nvim-dap-view
+      nvim-dap-python
     ];
   };
   extraPackages = with pkgs; [

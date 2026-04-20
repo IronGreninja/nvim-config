@@ -26,6 +26,7 @@ Config.now_if_args(function()
 
   Util.plugAdd "nvim-treesitter/nvim-treesitter"
   Util.plugAdd "nvim-treesitter/nvim-treesitter-textobjects"
+  Util.plugAdd "nvim-treesitter/nvim-treesitter-context"
   --[[ (non-nix) auto-install parsers (method 1)
   if not nixInfo.isNix then
     Util.plugAdd "lewis6991/ts-install.nvim"
