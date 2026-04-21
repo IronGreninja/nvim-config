@@ -7,10 +7,10 @@ inputs: {
 }: {
   imports = [wlib.wrapperModules.neovim];
 
-  specs.general = with pkgs.vimPlugins; [
+  config.specs.general = with pkgs.vimPlugins; [
     # plugins which are loaded at startup (start) ...
   ];
-  specs.lazy = {
+  config.specs.lazy = {
     lazy = true;
     data = with pkgs.vimPlugins; [
       # plugins which are not loaded until you vim.cmd.packadd them (opt) ...
@@ -45,7 +45,7 @@ inputs: {
       nvim-dap-python
     ];
   };
-  extraPackages = with pkgs; [
+  config.extraPackages = with pkgs; [
     # lsps, formatters, etc...
     # Formatters
     # others should be installed in devshell
@@ -62,5 +62,10 @@ inputs: {
 
     wl-clipboard
   ];
-  settings.dont_link = true;
+  config.settings.dont_link = true;
+
+  options.settings.base16palette = lib.mkOption {
+    type = lib.types.nullOr (lib.types.attrsOf lib.types.str);
+    default = null;
+  };
 }

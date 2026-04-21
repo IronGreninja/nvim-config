@@ -299,7 +299,13 @@ end)
 -- highlight all target matches. Example usage:
 -- - `fxff` - move *f*orward onto next character "x", then next, and next again
 -- - `dt)` - *d*elete *t*ill next closing parenthesis (`)`)
-later(function() require("mini.jump").setup { mappings = { repeat_jump = "." } } end)
+later(function()
+  require("mini.jump").setup {
+    mappings = {
+      repeat_jump = ";", -- setting to '.' messes with normal dot repeat (ex - >>)
+    },
+  }
+end)
 
 -- Jump within visible lines to pre-defined spots via iterative label filtering.
 -- Spots are computed by a configurable spotter function. Example usage:
