@@ -1,18 +1,18 @@
 do
-  -- Set up a global in a way that also handles non-nix compat
-  local ok
-  ok, _G.nixInfo = pcall(require, vim.g.nix_info_plugin_name)
-  if not ok then
+  -- non-nix compat
+  local isNix = vim.g.nix_info_plugin_name ~= nil
+  if not isNix then
+    vim.g.nix_info_plugin_name = "nix-info"
     package.loaded[vim.g.nix_info_plugin_name] = setmetatable({}, {
       __call = function(_, default) return default end,
     })
-    _G.nixInfo = require(vim.g.nix_info_plugin_name)
     -- If the fetcher function is used to fetch nix values,
     -- rather than indexing into the tables directly,
     -- it will use the value specified as the default
   end
 
-  nixInfo.isNix = vim.g.nix_info_plugin_name ~= nil
+  _G.nixInfo = require(vim.g.nix_info_plugin_name)
+  nixInfo.isNix = isNix
 
   -- override vim.fn.stdpath for 'config'
   local original_stdpath = vim.fn.stdpath

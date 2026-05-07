@@ -2,8 +2,12 @@
 
 Config.on_event("InsertEnter,CmdlineEnter", function()
   -- Config.now_if_args(function()
+  if not nixInfo.isNix then Util.plugAdd "saghen/blink.lib" end
   Util.plugAdd "saghen/blink.cmp"
-  require("blink-cmp").setup {
+
+  local cmp = require "blink-cmp"
+  if not nixInfo.isNix then cmp.build():wait(60000) end
+  cmp.setup {
     keymap = { preset = "default" },
     sources = { default = { "lsp", "path", "snippets", "buffer" } },
     appearance = { nerd_font_variant = "mono", use_nvim_cmp_as_default = true },
