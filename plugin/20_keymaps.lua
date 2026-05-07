@@ -8,7 +8,7 @@ local nmap = function(lhs, rhs, desc) vim.keymap.set("n", lhs, rhs, { desc = des
 nmap("[p", '<Cmd>exe "iput! " . v:register<CR>', "Paste Above")
 nmap("]p", '<Cmd>exe "iput "  . v:register<CR>', "Paste Below")
 
--- Many general mappings are also created by 'mini.basics'. See 'plugin/30_general.lua'
+-- Many general mappings are also created by 'mini.basics'. See 'plugin/40_general.lua'
 
 -- Create a global table with information about Leader groups in certain modes.
 -- This is used to provide 'mini.clue' with extra clues.
