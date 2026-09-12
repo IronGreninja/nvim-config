@@ -5,7 +5,7 @@ vim.g.mapleader   = ' '            -- Use `<Space>` as <Leader> key
 
 vim.o.mouse       = 'a'            -- Enable mouse
 -- vim.o.mousescroll = 'ver:25,hor:6' -- Customize mouse scroll
-vim.o.switchbuf   = 'usetab'       -- Use already opened buffers when switching
+vim.o.switchbuf   = 'useopen,uselast'       -- Use already opened buffers when switching
 vim.o.undofile    = true           -- Enable persistent undo (save undo history)
 
 vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
@@ -99,9 +99,10 @@ Config.new_autocmd(
 -- a more conservative display while still being useful.
 -- See `:h vim.diagnostic` and `:h vim.diagnostic.config()`.
 local diagnostic_opts = {
-  -- Show signs on top of any other sign, but only for warnings and errors
-  -- fixme: this draws diagnostic signs on top of DAP signs if both are present on same line
-  signs = { priority = 9999, severity = { min = "WARN", max = "ERROR" } },
+  -- Show signs only for warnings and errors
+  -- fixme: dap signs(eg - breakpoint, current line, etc) take priority over diagnostic signs. is there a way to show both?
+  severity_sort = true,
+  signs = { severity = { min = "WARN", max = "ERROR" } },
 
   -- Show all diagnostics as underline (for their messages type `<Leader>ld`)
   underline = { severity = { min = "HINT", max = "ERROR" } },

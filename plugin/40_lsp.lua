@@ -24,6 +24,8 @@ Config.now_if_args(function()
     "nixd",
     "yamlls",
     "gopls",
+    "jdtls",
+    "tinymist",
   }
 end)
 

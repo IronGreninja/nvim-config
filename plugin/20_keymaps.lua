@@ -172,7 +172,8 @@ nmap_leader("dT", "<Cmd>DapTerminate<CR>", "Terminate debug session")
 -- todo: add conditional Breakpoint map
 nmap("<F4>", "<Cmd>DapStepInto<CR>", "(DAP)Step into")
 nmap("<F5>", "<Cmd>DapStepOver<CR>", "(DAP)Step over")
-nmap("<F7>", "<Cmd>lua require'dap'.run_to_cursor()<CR>", "(DAP)Step over")
+nmap("<F6>", "<Cmd>DapStepOut<CR>", "(DAP)Step out")
+nmap("<F7>", "<Cmd>lua require'dap'.run_to_cursor()<CR>", "(DAP)Run to cursor")
 
 -- m is for 'Map'. Common usage:
 -- - `<Leader>mt` - toggle map from 'mini.map' (closed by default)

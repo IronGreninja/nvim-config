@@ -43,6 +43,8 @@ inputs: {
       nvim-dap
       nvim-dap-view
       nvim-dap-python
+
+      overseer-nvim
     ];
   };
   config.extraPackages = with pkgs; [
