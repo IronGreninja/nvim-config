@@ -1,6 +1,8 @@
 Config.later(function()
   Util.plugAdd "mfussenegger/nvim-dap"
 
+  require("overseer").enable_dap()
+
   local dap = require "dap"
 
   dap.defaults.fallback.external_terminal = {
@@ -10,26 +12,16 @@ Config.later(function()
   -- dap.defaults.fallback.force_external_terminal = true
   dap.defaults.fallback.terminal_win_cmd = "50vsplit new"
 
+  --[[ Adapter config ]]
   dap.adapters.codelldb = {
     type = "executable",
     command = vim.env.CODELLDB_PATH,
   }
 
-  dap.configurations.cpp = {
-    {
-      name = "Debug a.out",
-      type = "codelldb",
-      request = "launch",
-      program = "${fileDirname}/a.out",
-      args = {}, -- provide arguments if needed
-      cwd = "${fileDirname}",
-      -- stdio = { "input.txt", nil, nil },
-      terminal = "integrated",
-      -- terminal = "external",
-    },
-  }
-  dap.configurations.c = dap.configurations.cpp
+  --[[ Debugee config ]]
+  -- Note: use ./.vscode/launch.json for custom configs. An example is included in this repo.
 
+  -- additional plugins that provide nvim-dap configs:
   Util.plugAdd "mfussenegger/nvim-dap-python"
   require("dap-python").setup()
 end)

@@ -455,3 +455,11 @@ later(function() require("mini.trailspace").setup() end)
 --   vim.g.startuptime_tries = 10
 --   if nixInfo.isNix then vim.g.startuptime_exe_path = nixInfo.progpath end
 -- end)
+
+-- Task Runner
+now(function()
+  Util.plugAdd "stevearc/overseer.nvim" -- self-lazy-loading plugin
+  require("overseer").setup {
+    dap = false, -- load when nvim-dap loads
+  }
+end)

@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "make",
+      "type": "shell",
+      "command": "make",
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+    },
+    {
+      "label": "make <target>",
+      "type": "shell",
+      "command": "make ${input:prompt}",
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+    }
+  ],
+  "inputs": [
+    {
+      "id": "prompt",
+      "type": "promptString"
+    },
+    {
+      "id": "pick",
+      "type": "pickString",
+      "options": ["first", "second", "third"]
+    }
+  ]
+}
