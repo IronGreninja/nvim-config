@@ -30,6 +30,7 @@ Config.later(function()
       toml = { "taplo" },
       json = { "jq" },
       yaml = { "yamlfmt" },
+      dart = { "dart_format" },
     },
     log_level = vim.log.levels.WARN,
     notify_no_formatters = true,

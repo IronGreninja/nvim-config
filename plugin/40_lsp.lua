@@ -26,6 +26,7 @@ Config.now_if_args(function()
     "gopls",
     "jdtls",
     "tinymist",
+    "dartls",
   }
 end)
 

@@ -14,7 +14,7 @@ local themes = {
     setup = function() require("onedark").setup { style = "warmer" } end,
   },
   ["kanagawa-paper"] = {
-    "thesimonho/kanagawa-paper.nvim",
+    "thesimonho/kanagawa-paper",
     setup = function() require("kanagawa-paper").setup { cache = true } end,
   },
   ["gruvbox-material"] = {

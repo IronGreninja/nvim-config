@@ -22,7 +22,7 @@ inputs: {
       # themes
       gruvbox-material
       onedark-nvim
-      kanagawa-paper-nvim
+      kanagawa-paper
 
       vim-sleuth
       mini-nvim
@@ -47,7 +47,7 @@ inputs: {
       overseer-nvim
     ];
   };
-  config.extraPackages = with pkgs; [
+  config.runtimePkgs = with pkgs; [
     # lsps, formatters, etc...
     # Formatters
     # others should be installed in devshell
